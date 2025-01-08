@@ -1,0 +1,28 @@
+public class Circle {
+    // Private field to store the radius
+    private double radius;
+
+    // Constructor to initialize the radius
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    // Getter method to retrieve the radius
+    public double getRadius() {
+        return radius;
+    }
+
+    // Setter method to set the radius
+    public void setRadius(double radius) {
+        if (radius > 0) {
+            this.radius = radius;
+        } else {
+            System.out.println("Radius must be positive.");
+        }
+    }
+
+    // Method to calculate the area of the circle
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+}
