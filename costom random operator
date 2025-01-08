@@ -1,0 +1,59 @@
+import java.util.*;
+
+public class RandomNumberGenerator {
+    
+    // Method to generate a random integer between a given range (min and max)
+    public static int generateRandom(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
+    }
+
+    // Method to generate a random float between a given range (min and max)
+    public static float generateRandom(float min, float max) {
+        Random rand = new Random();
+        return min + (max - min) * rand.nextFloat();
+    }
+
+    // Method to generate a random double between a given range (min and max)
+    public static double generateRandom(double min, double max) {
+        Random rand = new Random();
+        return min + (max - min) * rand.nextDouble();
+    }
+
+    // Method to generate a random mixed value (int, float, or double) depending on the argument
+    public static Object generateRandom(String type) {
+        Random rand = new Random();
+        
+        switch (type.toLowerCase()) {
+            case "int":
+                return rand.nextInt(100);  // Random int between 0 and 99
+            case "float":
+                return rand.nextFloat();  // Random float between 0.0 and 1.0
+            case "double":
+                return rand.nextDouble();  // Random double between 0.0 and 1.0
+            default:
+                return "Invalid type";  // Invalid type handling
+        }
+    }
+
+    // Method to generate a random value (mixed types, as requested)
+    public static void generateRandomMixed() {
+        Random rand = new Random();
+        
+        int choice = rand.nextInt(3);
+        
+        switch (choice) {
+            case 0:
+                System.out.println("Generated Integer: " + generateRandom(1, 100));
+                break;
+            case 1:
+                System.out.println("Generated Float: " + generateRandom(1.0f, 100.0f));
+                break;
+            case 2:
+                System.out.println("Generated Double: " + generateRandom(1.0, 100.0));
+                break;
+            default:
+                break;
+        }
+    }
+}
