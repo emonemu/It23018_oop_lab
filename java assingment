@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+
+public class MaxValueAndSum {
+    public static void main(String[] args) {
+        // File paths for input and output files
+        String inputFile = "input.txt";
+        String outputFile = "output.txt";
+
+        // Initialize the Scanner and PrintWriter objects
+        Scanner scanner = null;
+        PrintWriter writer = null;
+
+        try {
+            // Create a Scanner to read from the input file
+            scanner = new Scanner(new File(inputFile));
+
+            // Variables to track the highest value and the sum of all values
+            int maxValue = Integer.MIN_VALUE;
+            int sum = 0;
+
+            // Read numbers from the file
+            while (scanner.hasNextInt()) {
+                int number = scanner.nextInt();
+
+                // Update the maxValue if the current number is greater
+                if (number > maxValue) {
+                    maxValue = number;
+                }
+
+                // Add the current number to the sum
+                sum += number;
+            }
+
+            // Create a PrintWriter to write to the output file
+            writer = new PrintWriter(new File(outputFile));
+
+            // Write the sum of the numbers to the output file
+            writer.println("Sum of numbers: " + sum);
+            writer.println("Highest value: " + maxValue);
+
+            System.out.println("Processing complete. Results written to " + outputFile);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: One or more files not found.");
+        } catch (Exception e) {
+            System.out.println("An error occurred: " + e.getMessage());
+        } finally {
+            // Close the resources (scanner and writer)
+            if (scanner != null) {
+                scanner.close();
+            }
+            if (writer != null) {
+                writer.close();
+            }
+        }
+    }
+}
